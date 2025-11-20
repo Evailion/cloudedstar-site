@@ -1,36 +1,133 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Privacy Policies – CloudedStar Extensions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Privacy policies for browser extensions by CloudedStar / Evailion.">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index of /cloudedstar</title>
+    <meta name="description" content="Things by CloudedStar." />
+
+    <!-- The only stylesheet you need now -->
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <header>
-    <h1>Privacy Policies</h1>
-    <p>Privacy information for browser extensions published by <strong>CloudedStar</strong> (Evailion).</p>
-  </header>
+    <div class="container">
+        <!-- Header -->
+        <header class="section">
+            <!-- Machine Voice: Terminal command -->
+            <span class="cmd-line">user@cloudedstar:~$ ls -la --privacy-check</span>
 
-  <main>
-    <section>
-      <h2>Extensions</h2>
-      <ul>
-        <li>
-          <a href="givemepng-privacy.html">GiveMePNG – Privacy Policy</a>
-        </li>
-        <!-- Add more extensions here later -->
-      </ul>
-    </section>
-  </main>
+            <div class="content-group">
+                <!-- Human Voice: Main Title -->
+                <h1>CloudedStar</h1>
+                <p class="text-muted-large">
+                    A directory of things.
+                    <br />
+                    <span class="text-italic-small">No tracking. I don't know how.</span>
+                </p>
+            </div>
+        </header>
 
-  <footer>
-    <p>&copy; <span id="year"></span> Evailion. All rights reserved.</p>
-  </footer>
+        <!-- Section: Tools -->
+        <section class="section">
+            <!-- Machine Voice: Section Header -->
+            <div class="machine-header">
+                <span class="prompt-char">./</span>tools
+            </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+            <ul class="tool-list">
+                <!-- Tool 1 -->
+                <li class="tool-item">
+                    <div class="tool-header-flex">
+                        <a href="givemepng.html" class="link-styled tool-link">GiveMePNG</a>
+                        <span class="badge">v1.0.0</span>
+                    </div>
+                    <p>
+                        Converts WebP, AVIF, or JPG images to PNG using the
+                        browser's native Canvas API. Useful for saving
+                        assets from sites that serve optimized formats.
+                    </p>
+                    <!-- Technical specs using the specs-list class -->
+                    <ul class="specs-list">
+                        <li>
+                            <span class="prompt-char">&gt;</span>
+                            permission: activeTab
+                        </li>
+                        <li>
+                            <span class="prompt-char">&gt;</span>
+                            processing: local
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Tool 2 (Placeholder) -->
+                <li class="tool-item dimmed">
+                    <div style="
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: baseline;
+                                margin-bottom: 0.5rem;
+                            ">
+                        <span class="font-bold-large-muted">Texturize</span>
+                        <span class="badge dev">dev</span>
+                    </div>
+                    <p>
+                        A browser extension for turning images into game-ready textures.
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section: Manifesto/Privacy -->
+        <section class="section">
+            <div class="machine-header">
+                <span class="prompt-char">./</span>privacy_policy.txt
+            </div>
+
+            <div>
+                <p>
+                    This policy applies to all tools listed above. The
+                    philosophy is simple:
+                    <strong>I do not want your data.</strong>
+                </p>
+                <ul class="specs-list mt-1-5">
+                    <li>
+                        <span class="prompt-char">01.</span>
+                        <span><strong>Data Collection:</strong> None. I do
+                            not install analytics, trackers, or telemetry
+                            pixels.</span>
+                    </li>
+                    <li>
+                        <span class="prompt-char">02.</span>
+                        <span><strong>Data Processing:</strong> Everything
+                            happens on your device (localhost). If you
+                            convert an image, the pixel data never leaves
+                            your browser memory.</span>
+                    </li>
+                    <li>
+                        <span class="prompt-char">03.</span>
+                        <span><strong>Identity:</strong> No accounts are
+                            required. I don't have a database of
+                            users.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div>
+                <p class="footer-text">CloudedStar</p>
+                <p class="footer-meta">
+                    updated: 2025-11-20
+                </p>
+            </div>
+            <div class="flex-gap-2">
+
+            </div>
+        </footer>
+    </div>
 </body>
+
 </html>
