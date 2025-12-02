@@ -183,6 +183,10 @@ h1.brand-name .highlight {
     margin-top: auto;
 }
 
+.sidebar-footer a:hover {
+    color: var(--color-accent);
+}
+
 .sidebar-footer.mobile-only {
     border-top: 1px solid var(--border-light);
     padding-top: 1.5rem;
