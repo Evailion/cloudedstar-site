@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - CloudedStar</title>
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Specific override for the 404 text to center it */
+        .error-container {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 60vh;
+        }
+
+        .error-code {
+            font-family: var(--font-mono);
+            font-size: 5rem;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .error-msg {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="wrapper">
+        <div class="error-container">
+            <h1 class="error-code">404</h1>
+            <p class="error-msg">Signal Lost.</p>
+
+            <a href="index.html" class="btn btn-primary">
+                Return to Index
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>

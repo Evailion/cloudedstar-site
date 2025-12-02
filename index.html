@@ -1,133 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index of /cloudedstar</title>
-    <meta name="description" content="Things by CloudedStar." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- The only stylesheet you need now -->
-    <link rel="stylesheet" href="styles.css" />
+    <title>CloudedStar | Digital Directory</title>
+    <meta name="description" content="The digital directory of CloudedStar. Home of the GiveMePNG browser extension.">
+    <link rel="canonical" href="https://cloudedstar.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cloudedstar.com/">
+    <meta property="og:title" content="CloudedStar">
+    <meta property="og:description" content="Digital directory and tools. No tracking. No data collection.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "CloudedStar",
+        "url": "https://cloudedstar.com",
+        "description": "Digital privacy advocate and tool builder."
+      }
+    }
+    </script>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="section">
-            <!-- Machine Voice: Terminal command -->
-            <span class="cmd-line">user@cloudedstar:~$ ls -la --privacy-check</span>
 
-            <div class="content-group">
-                <!-- Human Voice: Main Title -->
-                <h1>CloudedStar</h1>
-                <p class="text-muted-large">
-                    A directory of things.
-                    <br />
-                    <span class="text-italic-small">No tracking. I don't know how.</span>
-                </p>
+    <main class="wrapper">
+
+        <section class="sidebar">
+            <div class="sidebar-content">
+                <div class="identity-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <span class="version-tag">Index_v1.0</span>
+                </div>
+
+                <h1 class="brand-name">
+                    Clouded<br>
+                    <span class="highlight">Star</span>
+                </h1>
+
+                <div class="manifesto">
+                    <p>The digital directory of the alias known as CloudedStar.</p>
+                    <p>Not a product. Not a service. Just a collection of links, policies, and experiments.</p>
+                </div>
             </div>
-        </header>
 
-        <!-- Section: Tools -->
-        <section class="section">
-            <!-- Machine Voice: Section Header -->
-            <div class="machine-header">
-                <span class="prompt-char">./</span>tools
-            </div>
-
-            <ul class="tool-list">
-                <!-- Tool 1 -->
-                <li class="tool-item">
-                    <div class="tool-header-flex">
-                        <a href="givemepng.html" class="link-styled tool-link">GiveMePNG</a>
-                        <span class="badge">v1.0.0</span>
-                    </div>
-                    <p>
-                        Converts WebP, AVIF, or JPG images to PNG using the
-                        browser's native Canvas API. Useful for saving
-                        assets from sites that serve optimized formats.
-                    </p>
-                    <!-- Technical specs using the specs-list class -->
-                    <ul class="specs-list">
-                        <li>
-                            <span class="prompt-char">&gt;</span>
-                            permission: activeTab
-                        </li>
-                        <li>
-                            <span class="prompt-char">&gt;</span>
-                            processing: local
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- Tool 2 (Placeholder) -->
-                <li class="tool-item dimmed">
-                    <div style="
-                                display: flex;
-                                justify-content: space-between;
-                                align-items: baseline;
-                                margin-bottom: 0.5rem;
-                            ">
-                        <span class="font-bold-large-muted">Texturize</span>
-                        <span class="badge dev">dev</span>
-                    </div>
-                    <p>
-                        A browser extension for turning images into game-ready textures.
-                    </p>
-                </li>
-            </ul>
+            <footer class="sidebar-footer desktop-only">
+                <p>&copy; 2025 CloudedStar</p>
+                <p>London, UK / Cyber</p>
+            </footer>
         </section>
 
-        <!-- Section: Manifesto/Privacy -->
-        <section class="section">
-            <div class="machine-header">
-                <span class="prompt-char">./</span>privacy_policy.txt
+        <section class="content">
+
+            <div class="directory-header">
+                <div class="section-title-group">
+                    <span class="section-title">Directory</span>
+                    <div class="title-dash"></div>
+                </div>
             </div>
 
-            <div>
-                <p>
-                    This policy applies to all tools listed above. The
-                    philosophy is simple:
-                    <strong>I do not want your data.</strong>
-                </p>
-                <ul class="specs-list mt-1-5">
+            <div class="directory-list-container">
+                <div class="grid-row list-header" aria-hidden="true">
+                    <div class="col-id">ID</div>
+                    <div class="col-name">Name</div>
+                    <div class="col-type">Type</div>
+                </div>
+
+                <ul class="directory-list">
+
                     <li>
-                        <span class="prompt-char">01.</span>
-                        <span><strong>Data Collection:</strong> None. I do
-                            not install analytics, trackers, or telemetry
-                            pixels.</span>
+                        <a href="give-me-png.html" class="directory-item grid-row">
+                            <div class="accent-line"></div>
+
+                            <div class="item-id">
+                                <span class="id-badge">001</span>
+                            </div>
+
+                            <div class="item-content">
+                                <h3 class="item-title">GiveMePNG</h3>
+                                <p class="item-desc">Browser extension for rapid asset extraction and conversion.</p>
+                            </div>
+
+                            <div class="item-meta">
+                                <span class="category-tag">Software</span>
+                            </div>
+                        </a>
                     </li>
-                    <li>
-                        <span class="prompt-char">02.</span>
-                        <span><strong>Data Processing:</strong> Everything
-                            happens on your device (localhost). If you
-                            convert an image, the pixel data never leaves
-                            your browser memory.</span>
-                    </li>
-                    <li>
-                        <span class="prompt-char">03.</span>
-                        <span><strong>Identity:</strong> No accounts are
-                            required. I don't have a database of
-                            users.</span>
-                    </li>
+
                 </ul>
             </div>
+
+            <footer class="sidebar-footer mobile-only">
+                <p>&copy; 2025 CloudedStar</p>
+            </footer>
+
         </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div>
-                <p class="footer-text">CloudedStar</p>
-                <p class="footer-meta">
-                    updated: 2025-11-20
-                </p>
-            </div>
-            <div class="flex-gap-2">
+    </main>
 
-            </div>
-        </footer>
-    </div>
 </body>
 
 </html>

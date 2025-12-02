@@ -1,0 +1,690 @@
+/* ==========================================================================
+   1. DESIGN TOKENS & RESET
+   ========================================================================== */
+:root {
+    /* --- Palette --- */
+    --color-bg: #FAF9F6;
+    /* Bone White */
+    --color-surface: #FFFFFF;
+    /* Pure White */
+    --color-text: #2A2A2A;
+    /* Soft Charcoal */
+    --color-text-sub: #555555;
+    /* Mid Grey */
+    --color-text-dim: #888888;
+    /* Light Grey */
+    --color-accent: #6667AB;
+    /* VeryPeri */
+
+    /* --- Borders & UI --- */
+    --border-light: rgba(42, 42, 42, 0.1);
+    --border-med: rgba(42, 42, 42, 0.2);
+    --bg-hover: #EAE8E0;
+
+    /* --- Typography --- */
+    --font-serif: 'DM Serif Display', serif;
+    --font-mono: 'Space Mono', monospace;
+
+    /* --- Layout Dimensions --- */
+    --page-width: 1280px;
+    --header-height: 6rem;
+
+    /* --- Animation --- */
+    --snap: all 100ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Base Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: sans-serif;
+    /* Fallback */
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* Selection & Scrollbar */
+::selection {
+    background: var(--color-accent);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-text);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--snap);
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* ==========================================================================
+   2. MAIN LAYOUT GRID
+   ========================================================================== */
+.wrapper {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+/* Desktop: Sidebar (3/12) + Content (9/12) */
+@media (min-width: 1024px) {
+    .wrapper {
+        padding: 6rem 1.5rem;
+        grid-template-columns: 3fr 9fr;
+        gap: 4rem;
+    }
+}
+
+/* ==========================================================================
+   3. SIDEBAR COMPONENT
+   ========================================================================== */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-right: 1px solid transparent;
+}
+
+@media (min-width: 1024px) {
+    .sidebar {
+        position: sticky;
+        top: var(--header-height);
+        align-self: start;
+        min-height: 50vh;
+        border-right: 1px solid var(--border-light);
+        padding-right: 2rem;
+    }
+}
+
+/* Identity / Brand */
+.identity-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-accent);
+    margin-bottom: 2rem;
+}
+
+.version-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+h1.brand-name {
+    font-family: var(--font-serif);
+    font-size: 3.75rem;
+    line-height: 0.9;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: var(--color-text);
+}
+
+h1.brand-name .highlight {
+    font-style: italic;
+    color: var(--color-accent);
+}
+
+@media (min-width: 768px) {
+    h1.brand-name {
+        font-size: 4.5rem;
+    }
+}
+
+.manifesto {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-text-sub);
+    max-width: 20rem;
+    margin-bottom: 3rem;
+}
+
+.manifesto p {
+    margin-bottom: 1rem;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-dim);
+    margin-top: auto;
+}
+
+.sidebar-footer.mobile-only {
+    border-top: 1px solid var(--border-light);
+    padding-top: 1.5rem;
+    margin-top: 3rem;
+}
+
+.sidebar-footer.desktop-only {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .sidebar-footer.mobile-only {
+        display: none;
+    }
+
+    .sidebar-footer.desktop-only {
+        display: block;
+    }
+}
+
+/* ==========================================================================
+   4. DIRECTORY LIST SYSTEM (UPDATED)
+   ========================================================================== */
+.directory-header {
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--color-text-dim);
+    margin-right: 0.75rem;
+}
+
+.title-dash {
+    height: 1px;
+    width: 3rem;
+    background-color: var(--border-med);
+    display: none;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .title-dash {
+        display: block;
+    }
+}
+
+/* Grid Definition */
+.grid-row {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    gap: 1rem;
+    align-items: baseline;
+}
+
+@media (min-width: 768px) {
+    .grid-row {
+        grid-template-columns: 2fr 8fr 2fr;
+    }
+
+    /* ID | Content | Meta */
+}
+
+/* Headers - NOW WITH PADDING */
+.list-header {
+    padding: 0 1.5rem 0.5rem 1.5rem;
+    /* Aligns with the items below */
+    border-bottom: 1px solid var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-sub);
+}
+
+.col-type {
+    display: none;
+    text-align: right;
+}
+
+@media (min-width: 768px) {
+    .col-type {
+        display: block;
+    }
+}
+
+/* The Item Card - NOW WITH PADDING */
+.directory-item {
+    position: relative;
+    padding: 1.5rem 1.5rem;
+    /* Adds breathing room on left/right */
+    border-bottom: 1px solid var(--border-light);
+    cursor: pointer;
+    overflow: hidden;
+    display: block;
+    border-radius: 4px;
+    /* Optional: Softens the hover block corners */
+    transition: background-color 200ms ease;
+}
+
+.directory-item:hover {
+    background-color: var(--bg-hover);
+}
+
+.directory-item:focus-visible {
+    background-color: var(--color-text);
+    outline: none;
+}
+
+/* Item Columns */
+.item-id .id-badge {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    color: var(--color-accent);
+    display: inline-block;
+    transition: var(--snap);
+}
+
+.directory-item:hover .id-badge {
+    background-color: var(--color-text);
+    color: white;
+}
+
+.directory-item:focus-visible .id-badge {
+    background-color: white;
+    color: var(--color-text);
+}
+
+.item-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.33;
+    color: var(--color-text);
+    transition: var(--snap);
+}
+
+/* Adjusted transform since we now have padding */
+.directory-item:hover .item-title {
+    transform: translateX(0.25rem);
+}
+
+.directory-item:focus-visible .item-title {
+    color: white;
+    transform: translateX(0.25rem);
+}
+
+.item-desc {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-sub);
+    max-width: 32rem;
+    margin-top: 0.25rem;
+    transition: var(--snap);
+}
+
+.directory-item:focus-visible .item-desc {
+    color: #CCCCCC;
+}
+
+/* Meta Tags */
+.item-meta {
+    display: none;
+    justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+    .item-meta {
+        display: flex;
+    }
+}
+
+.category-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    border: 1px solid var(--border-med);
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+    transition: var(--snap);
+}
+
+.directory-item:hover .category-tag {
+    border-color: var(--color-text);
+    color: var(--color-text);
+}
+
+.directory-item:focus-visible .category-tag {
+    border-color: white;
+    color: white;
+}
+
+/* Hover Accent Line */
+.accent-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--color-accent);
+    opacity: 0;
+    transition: var(--snap);
+}
+
+.directory-item:hover .accent-line,
+.directory-item:focus-visible .accent-line {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   5. PROJECT PAGE SPECIFICS (GiveMePNG)
+   ========================================================================== */
+.nav-back {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-text-dim);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-back:hover {
+    color: var(--color-accent);
+}
+
+/* Metadata List */
+.spec-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.spec-list dt {
+    color: var(--color-text-dim);
+}
+
+.spec-list dd {
+    color: var(--color-text);
+    text-align: right;
+}
+
+@media (min-width: 1024px) {
+    .spec-list {
+        grid-template-columns: 1fr;
+        row-gap: 0.5rem;
+    }
+
+    .spec-list dt {
+        float: left;
+        width: 40%;
+        clear: left;
+    }
+
+    .spec-list dd {
+        float: left;
+        width: 60%;
+        text-align: left;
+    }
+}
+
+/* Project Header */
+.project-title {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .project-title {
+        font-size: 5rem;
+    }
+}
+
+.project-tagline {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--color-text-sub);
+    max-width: 36rem;
+    margin-bottom: 3rem;
+}
+
+/* Tabs */
+.tab-controls {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 3rem;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 0;
+    color: var(--color-text-dim);
+    position: relative;
+    transition: color 100ms;
+}
+
+.tab-btn:hover {
+    color: var(--color-text);
+}
+
+.tab-btn[aria-selected="true"] {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.tab-btn[aria-selected="true"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+}
+
+/* Panels */
+.panel:not([hidden]) {
+    animation: fade-in 300ms ease-out;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Visual Browser Mockup */
+.visual-container {
+    background-color: var(--bg-hover);
+    border: 1px solid var(--border-light);
+    height: 300px;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.browser-mock {
+    width: 60%;
+    height: 60%;
+    background: white;
+    border: 1px solid var(--color-text);
+    box-shadow: 8px 8px 0 rgba(42, 42, 42, 0.1);
+}
+
+.browser-bar {
+    height: 20px;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-left: 8px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ddd;
+}
+
+.image-mock {
+    width: 60%;
+    height: 60%;
+    margin: 20px auto;
+    background: #f0f0f0;
+    border: 1px dashed #ccc;
+    position: relative;
+}
+
+.cursor-mock {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    background: var(--color-accent);
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    transform: rotate(-15deg);
+}
+
+.save-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-text);
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    padding: 4px 8px;
+}
+
+/* Buttons */
+.btn {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    padding: 1rem 2rem;
+    border: 1px solid var(--color-text);
+    display: inline-block;
+    cursor: pointer;
+    background: transparent;
+    color: var(--color-text);
+}
+
+.btn-primary {
+    background-color: var(--color-text);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    border-top: 1px solid var(--border-light);
+    padding-top: 3rem;
+}
+
+@media (min-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.feature h3 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+}
+
+.feature p {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text-sub);
+}
+
+/* Privacy Doc */
+.privacy-doc {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    line-height: 1.8;
+    max-width: 48rem;
+    padding: 2rem;
+    background: white;
+    border: 1px solid var(--border-light);
+}
+
+.privacy-doc h2 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.privacy-doc h3 {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--color-text-sub);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-doc ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
